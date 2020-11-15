@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Text Shadow </title>
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Ruthie&family=Tangerine&display=swap');
+
+        .hero{
+            height: 100vh;
+            width: 100%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        h1{
+            color:#896a67;
+            text-shadow:10px 10px 0 #fff8f0; 
+            font-family: 'Ruthie', cursive;
+            font-size:50px;
+            font-weight: lighter;
+        }
+        img{
+            float:left;
+            margin-left:-10%;
+            height:250px;
+            width:250px;
+        }
+
+@media screen and (max-width: 600px) {
+ h1{
+     font-size: 30px;
+ }
+}
+    </style>
+
+
+</head>
+<body style="background-color: white ;">
+    
+    <div class="hero">
+        <img src="pic/flower.png" alt="">
+
+            <h1>She loved the ocean because everytime the waves <br>
+                left the shore, they always came back.</h1>
+
+    </div>
+    
+    
+    <script>
+
+        const hero= document.querySelector('.hero');
+        const text= hero.querySelector('h1');
+        const walk= 5;
+
+        function shadow(e)
+        {
+            const width= hero.offsetWidth;
+            const height= hero.offsetHeight;
+            let x=e.offsetX;
+            let y=e.offsetY;
+
+        if(this !== e.target)
+        {
+            x= x + e.target.offsetLeft;
+            y= y + e.target.offsetTop;
+        }
+
+        const xwalk= Math.round((x/ width*walk) - (walk/2));
+        const ywalk= Math.round((y/ height*walk) - (walk/2));
+
+        text.style.textShadow=`${xwalk}px ${ywalk}px 0 #d2bba0`;
+        console.log(e);
+
+        }
+
+        hero.addEventListener('mousemove', shadow);
+
+
+    </script>
+
+
+</body>
+</html>
